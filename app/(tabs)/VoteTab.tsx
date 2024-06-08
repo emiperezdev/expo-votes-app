@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 import { Text, View } from '@/components/Themed';
 
-export default function IneTab() {
+export default function VoteTab() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Ine Capture</Text>
