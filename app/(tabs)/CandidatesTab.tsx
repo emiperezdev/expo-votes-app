@@ -4,7 +4,7 @@ import { View } from '@/components/Themed';
 import PartidoCard from '@/components/PartidoCard';
 import partidos from '@/data/partidos';
 
-export default function TabTwoScreen() {
+export default function CandidatesTab() {
   return (
     <View style={styles.container}>
       <SafeAreaView style={{ flex: 1 }}>
