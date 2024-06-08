@@ -11,9 +11,10 @@ export default function CandidatesTab() {
       <ScrollView>
         {partidos.map((partido) => (
            <PartidoCard
+           id={partido.id}
            key={partido.id}
            partidoName={partido.title}
-           image="https://i.pinimg.com/originals/05/5a/91/055a91979264664a1ee12b9453610d82.png"
+           image={partido.image}
            candidateName={partido.name}
            votes={partido.votos}
          />

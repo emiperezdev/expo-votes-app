@@ -1,15 +1,17 @@
 import React from 'react';
 import { View, StyleSheet, Image } from 'react-native';
 import { Card, Title, Paragraph, Button } from 'react-native-paper';
+import { Link } from 'expo-router';
 
 interface Props {
+  id: number;
   partidoName: string;
   image: string;
   candidateName: string;
   votes: number
 }
 
-const PartidoCard: React.FC<Props> = ({ partidoName, image, candidateName, votes }) => {
+const PartidoCard: React.FC<Props> = ({ id, partidoName, image, candidateName, votes }) => {
   return (
     <Card style={styles.card}>
       <Card.Content>
@@ -21,9 +23,11 @@ const PartidoCard: React.FC<Props> = ({ partidoName, image, candidateName, votes
         </View>
         <Paragraph style={styles.paragraph}>{candidateName}</Paragraph>
         <View style={styles.buttonRow}>
-          <Button mode="contained" onPress={() => console.log('Button 1 pressed')} style={styles.button}>
-            DETALLES
-          </Button>
+          <Link href={`/CandidateDetails?name=${partidoName}`} asChild>
+            <Button mode="contained" style={styles.button}>
+              DETALLES
+            </Button>
+          </Link>
         </View>
         <Paragraph style={styles.paragraph}>Votos: {votes}</Paragraph>
       </Card.Content>
