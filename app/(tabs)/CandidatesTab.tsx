@@ -1,7 +1,6 @@
 import { SafeAreaView, ScrollView, StyleSheet } from 'react-native';
 
-import EditScreenInfo from '@/components/EditScreenInfo';
-import { Text, View } from '@/components/Themed';
+import { View } from '@/components/Themed';
 import PartidoCard from '@/components/PartidoCard';
 import partidos from '@/data/partidos';
 
@@ -21,7 +20,6 @@ export default function TabTwoScreen() {
         ))}
       </ScrollView>
     </SafeAreaView>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
     </View>
   );
 }

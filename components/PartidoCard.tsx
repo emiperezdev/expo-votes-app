@@ -24,9 +24,6 @@ const PartidoCard: React.FC<Props> = ({ partidoName, image, candidateName, votes
           <Button mode="contained" onPress={() => console.log('Button 1 pressed')} style={styles.button}>
             DETALLES
           </Button>
-          <Button mode="contained" onPress={() => console.log('Button 2 pressed')} style={styles.button}>
-            VOTAR
-          </Button>
         </View>
         <Paragraph style={styles.paragraph}>Votos: {votes}</Paragraph>
       </Card.Content>
