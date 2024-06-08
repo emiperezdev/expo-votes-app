@@ -21,7 +21,7 @@ const CandidateDetails = () => {
           data={partido.propuestas}
           renderItem={({ item, index }) => (
             <Text style={styles.propuesta}>
-              {index + 1}- {item}
+              {index + 1} : {item}
             </Text>
           )}
           keyExtractor={(item, index) => index.toString()}
