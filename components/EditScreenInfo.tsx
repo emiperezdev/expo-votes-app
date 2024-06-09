@@ -3,7 +3,7 @@ import { Dimensions } from "react-native";
 import {
   LineChart
 } from "react-native-chart-kit";
-import { Text, View } from "./Themed";
+import { View } from "./Themed";
 import partidos from "@/data/partidos";
 
 export default function EditScreenInfo({ path }: { path: string }) {
