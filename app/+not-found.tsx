@@ -1,21 +1,18 @@
-import { Link, Stack } from 'expo-router';
+import { useEffect } from 'react';
+import { useRouter } from 'expo-router';
 import { StyleSheet } from 'react-native';
 
 import { Text, View } from '@/components/Themed';
 
 export default function NotFoundScreen() {
-  return (
-    <>
-      <Stack.Screen options={{ title: 'Oops!' }} />
-      <View style={styles.container}>
-        <Text style={styles.title}>This screen doesn't exist.</Text>
+  const router = useRouter();
 
-        <Link href="/" style={styles.link}>
-          <Text style={styles.linkText}>Go to home screen!</Text>
-        </Link>
-      </View>
-    </>
-  );
+  useEffect(() => {
+    // Redirigir a /HomeTab en cuanto se monta el componente
+    router.replace('/HomeTab');
+  }, []);
+
+  return null; // No renderizar nada, ya que redirigimos inmediatamente
 }
 
 const styles = StyleSheet.create({
