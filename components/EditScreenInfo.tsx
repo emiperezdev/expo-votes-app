@@ -29,24 +29,24 @@ export default function EditScreenInfo({ path }: { path: string }) {
         yAxisInterval={1}
         chartConfig={{
           backgroundColor: "#D8BAEC",
-          backgroundGradientFrom: "#078884",
-          backgroundGradientTo: "#D3AAEF",
-          decimalPlaces: 2,
-          color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-          labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+          backgroundGradientFrom: "#AF7AC5",
+          backgroundGradientTo: "#EBDEF0",
+          decimalPlaces: 0,
+          color: (opacity = 1) => `rgba(100, 100, 100, ${opacity})`,
+          labelColor: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
           style: {
-            borderRadius: 16,
+            borderRadius: 6,
           },
           propsForDots: {
-            r: "6",
+            r: "9",
             strokeWidth: "2",
-            stroke: "#ffa726",
+            stroke: "#512E5F",
           },
         }}
         bezier
         style={{
-          marginVertical: 8,
-          borderRadius: 16,
+          marginVertical: 2,
+          borderRadius: 20
         }}
       />
     </View>
