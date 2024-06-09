@@ -2,15 +2,16 @@ import { useEffect } from 'react';
 import { useRouter } from 'expo-router';
 import { StyleSheet } from 'react-native';
 
-import { Text, View } from '@/components/Themed';
-
 export default function NotFoundScreen() {
   const router = useRouter();
 
   useEffect(() => {
-    // Redirigir a /HomeTab en cuanto se monta el componente
-    router.replace('/HomeTab');
-  }, []);
+    const timeout = setTimeout(() => {
+      router.replace('/HomeTab');
+    }, 0); // Puedes ajustar el retraso si es necesario
+
+    return () => clearTimeout(timeout);
+  }, [router]);
 
   return null; // No renderizar nada, ya que redirigimos inmediatamente
 }
