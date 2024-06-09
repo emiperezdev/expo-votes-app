@@ -5,9 +5,10 @@ import { Card, Title, Button } from 'react-native-paper';
 interface Props {
   partidoName: string;
   candidateName: string;
+  votes: number;
 }
 
-const VoteCard: React.FC<Props> = ({ partidoName, candidateName }) => {
+const VoteCard: React.FC<Props> = ({ partidoName, candidateName, votes }) => {
   return (
     <Card style={styles.card}>
       <Card.Content>
@@ -16,6 +17,9 @@ const VoteCard: React.FC<Props> = ({ partidoName, candidateName }) => {
         </View>
         <View style={styles.titleContainer}>
           <Title style={styles.title}>{candidateName}</Title>
+        </View>
+        <View style={styles.titleContainer}>
+          <Title style={styles.title}>Votos: {votes}</Title>
         </View>
         <View style={styles.buttonRow}>
           <Button mode="contained" style={styles.button}>
