@@ -23,13 +23,13 @@ export default function EditScreenInfo({ path }: { path: string }) {
           ],
         }}
         width={Dimensions.get("window").width}
-        height={520}
+        height={450}
         yAxisLabel=""
         yAxisSuffix=""
         yAxisInterval={1}
         chartConfig={{
           backgroundColor: "#D8BAEC",
-          backgroundGradientFrom: "#AF7AC5",
+          backgroundGradientFrom: "#D7BDE2",
           backgroundGradientTo: "#EBDEF0",
           decimalPlaces: 0,
           color: (opacity = 1) => `rgba(100, 100, 100, ${opacity})`,
