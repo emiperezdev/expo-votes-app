@@ -1,4 +1,5 @@
-import React from 'react';
+import partidos from '@/data/partidos';
+import React, { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Card, Title, Button } from 'react-native-paper';
 
@@ -9,6 +10,16 @@ interface Props {
 }
 
 const VoteCard: React.FC<Props> = ({ partidoName, candidateName, votes }) => {
+  const [currentVotes, setCurrentVotes] = useState(votes);
+
+  const handleVote = () => {
+    const partidoIndex = partidos.findIndex(partido => partido.name === candidateName);
+    if (partidoIndex !== -1) {
+      partidos[partidoIndex].votos += 1;
+      setCurrentVotes(partidos[partidoIndex].votos);
+    }
+  };
+
   return (
     <Card style={styles.card}>
       <Card.Content>
@@ -19,10 +30,10 @@ const VoteCard: React.FC<Props> = ({ partidoName, candidateName, votes }) => {
           <Title style={styles.title}>{candidateName}</Title>
         </View>
         <View style={styles.titleContainer}>
-          <Title style={styles.title}>Votos: {votes}</Title>
+          <Title style={styles.title}>Votos: {currentVotes}</Title>
         </View>
         <View style={styles.buttonRow}>
-          <Button mode="contained" style={styles.button}>
+          <Button mode="contained" style={styles.button} onPress={handleVote}>
             VOTAR
           </Button>
         </View>

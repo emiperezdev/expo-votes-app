@@ -29,7 +29,6 @@ const PartidoCard: React.FC<Props> = ({ id, partidoName, image, candidateName, v
             </Button>
           </Link>
         </View>
-        <Paragraph style={styles.paragraph}>Votos: {votes}</Paragraph>
       </Card.Content>
     </Card>
   );
