@@ -22,7 +22,7 @@ export default function App() {
     return (
       <View style={styles.container}>
         <Text style={{ textAlign: 'center' }}>We need your permission to show the camera</Text>
-        <Button onPress={setHasCameraPermission} title="grant permission" />
+        <Button onPress={setHasCameraPermission} title="Grant Camera permission" />
       </View>
     );
   }
@@ -32,7 +32,7 @@ export default function App() {
     return (
       <View style={styles.container}>
         <Text style={{ textAlign: 'center' }}>We need your permission to record audio</Text>
-        <Button onPress={setHasMicrophonePermission} title="grant permission" />
+        <Button onPress={setHasMicrophonePermission} title="Grant Microphone permission" />
       </View>
     );
   }
