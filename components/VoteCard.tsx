@@ -2,14 +2,16 @@ import partidos from '@/data/partidos';
 import React, { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Card, Title, Button } from 'react-native-paper';
+import hasVoted from "@/data/hasVoted";
 
 interface Props {
   partidoName: string;
   candidateName: string;
   votes: number;
+  onVote: () => void;
 }
 
-const VoteCard: React.FC<Props> = ({ partidoName, candidateName, votes }) => {
+const VoteCard: React.FC<Props> = ({ partidoName, candidateName, votes, onVote }) => {
   const [currentVotes, setCurrentVotes] = useState(votes);
 
   const handleVote = () => {
@@ -18,6 +20,9 @@ const VoteCard: React.FC<Props> = ({ partidoName, candidateName, votes }) => {
       partidos[partidoIndex].votos += 1;
       setCurrentVotes(partidos[partidoIndex].votos);
     }
+
+    hasVoted[0].hasVoted = true;
+    onVote();
   };
 
   return (

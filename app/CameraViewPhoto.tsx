@@ -1,13 +1,30 @@
 import { CameraView, useCameraPermissions } from 'expo-camera';
-import { useState, useRef } from 'react';
+import { useState, useRef, useCallback } from 'react';
 import { Button, StyleSheet, Text, TouchableOpacity, View, Image, Alert } from 'react-native';
 import * as MediaLibrary from "expo-media-library";
+import ineFotos from '@/data/ineFotos';
+import { useLocalSearchParams } from 'expo-router';
+import { useFocusEffect } from '@react-navigation/native';
 
-export default function App() {
+const CameraViewPhoto = () => {
   const [hasCameraPermission, setHasCameraPermission] = useCameraPermissions();
   const [facing, setFacing] = useState('back');
   const cameraRef = useRef(null);
   const [photo, setPhoto] = useState(null);
+  const { parteIne } = useLocalSearchParams();
+  const [isCameraActive, setIsCameraActive] = useState(false);
+
+  useFocusEffect(
+    useCallback(() => {
+      // Monta la cámara cuando la pantalla está enfocada
+      setIsCameraActive(true);
+
+      return () => {
+        // Desmonta la cámara cuando la pantalla pierde el foco
+        setIsCameraActive(false);
+      };
+    }, [])
+  );
 
   if (!hasCameraPermission) {
     // Camera permissions are still loading.
@@ -38,27 +55,38 @@ export default function App() {
       const { status } = await MediaLibrary.requestPermissionsAsync();
 
       if (status === "granted") {
-        await MediaLibrary.saveToLibraryAsync(uri);        
+        await MediaLibrary.saveToLibraryAsync(uri);
+
+        if (parteIne == "frente") {
+          ineFotos[0].frente = true;
+        }
+
+        if (parteIne == "reverso") {
+          ineFotos[0].reverso = true;
+        }
+
         Alert.alert("Foto guardada", `La foto se guardó exitosamente`);
       }
     } catch (error) {
       Alert.alert("Error", `Ocurrió un error al guardar la foto ${error}`);
     }
-  }  
+  }
 
   return (
     <View style={styles.container}>
-      <CameraView style={styles.camera} ref={cameraRef} facing={facing}>
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.button} onPress={takePhoto}>
-            <Text style={styles.text}>Take photo</Text>
-          </TouchableOpacity>
-        </View>
-      </CameraView>
+      {isCameraActive && (
+        <CameraView style={styles.camera} ref={cameraRef} mode="picture" facing={facing}>
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity style={styles.button} onPress={takePhoto}>
+              <Text style={styles.text}>Take photo</Text>
+            </TouchableOpacity>
+          </View>
+        </CameraView>
+      )}
       {photo && <Image source={{ uri: photo }} style={{ flex: 1 }} />}
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -85,3 +113,5 @@ const styles = StyleSheet.create({
     color: 'white',
   },
 });
+
+export default CameraViewPhoto;

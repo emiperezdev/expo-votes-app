@@ -1,9 +1,9 @@
 import { CameraView, useCameraPermissions, useMicrophonePermissions } from 'expo-camera';
 import { useState, useRef } from 'react';
-import { Button, StyleSheet, Text, TouchableOpacity, View, Image, Alert } from 'react-native';
+import { Button, StyleSheet, Text, TouchableOpacity, View, Alert } from 'react-native';
 import * as MediaLibrary from "expo-media-library";
 
-export default function App() {
+const CameraViewVideo = () => {
   const [hasCameraPermission, setHasCameraPermission] = useCameraPermissions();
   const [hasMicrophonePermission, setHasMicrophonePermission] = useMicrophonePermissions();
   const [facing, setFacing] = useState('back');
@@ -116,3 +116,5 @@ const styles = StyleSheet.create({
     color: 'white',
   },
 });
+
+export default CameraViewVideo;
