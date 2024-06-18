@@ -115,6 +115,30 @@ export default function TabLayout() {
           ),
         }}
       />
+
+
+
+<Tabs.Screen
+        name="PrivacyPolicy"
+        options={{
+          title: "Privacy Policy",
+          tabBarIcon: ({ color }) => <TabBarIcon name="archive" color={color} />,
+          headerRight: () => (
+            <Link href="/modal" asChild>
+              <Pressable>
+                {({ pressed }) => (
+                  <FontAwesome
+                    name="bar-chart"
+                    size={25}
+                    color={Colors[colorScheme ?? "light"].text}
+                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
+                  />
+                )}
+              </Pressable>
+            </Link>
+          ),
+        }}
+      />
     </Tabs>
   );
 }
